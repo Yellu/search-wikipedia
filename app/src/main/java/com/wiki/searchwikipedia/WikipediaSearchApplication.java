@@ -1,4 +1,4 @@
-package com.wiki.wikipedia_search;
+package com.wiki.searchwikipedia;
 
 import android.app.Application;
 import io.realm.Realm;

@@ -1,4 +1,4 @@
-package com.wiki.wikipedia_search
+package com.wiki.searchwikipedia
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

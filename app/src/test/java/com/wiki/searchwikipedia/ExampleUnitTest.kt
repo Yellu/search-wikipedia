@@ -1,4 +1,4 @@
-package com.wiki.wikipedia_search
+package com.wiki.searchwikipedia
 
 import org.junit.Test
 
