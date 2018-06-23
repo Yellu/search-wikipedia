@@ -13,5 +13,4 @@ public class SearchResultMainEntity extends RealmObject {
     public QueryEntity getQuery() {
         return query;
     }
-//    private ContinueEntity continue;
 }

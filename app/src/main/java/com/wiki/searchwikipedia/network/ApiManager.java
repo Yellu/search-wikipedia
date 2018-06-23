@@ -1,17 +1,20 @@
 package com.wiki.searchwikipedia.network;
 
+import java.util.Map;
+
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 public class ApiManager {
     private static final ApiManager instance = new ApiManager();
 
-    private final String baseUrl = "";
+    private final String baseUrl = "http://en.wikipedia.org/";
+//    private final static String api = "api.php?action=query&formatversion=2&prop=pageimages|pageterms&pilimit=3&piprop=thumbnail&wbptterms=description&redirects= 1";
 
     public static ApiManager getInstance(){
         return instance;
@@ -37,13 +40,13 @@ public class ApiManager {
 
     private interface WikiApiClient{
 
-        @GET
-        Call<ResponseBody> search(@Query("q") String query);
+        @GET("w/api.php")
+        Call<ResponseBody> search(@QueryMap Map<String, Object> queryMap);
 
     }
 
-    public Call<ResponseBody> searchApi(String query){
-        return getService().search(query);
+    public Call<ResponseBody> searchApi(Map<String, Object> queryMap){
+        return getService().search(queryMap);
     }
 
 }
