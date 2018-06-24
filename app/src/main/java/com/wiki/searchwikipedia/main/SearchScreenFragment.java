@@ -1,5 +1,6 @@
 package com.wiki.searchwikipedia.main;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.wiki.searchwikipedia.R;
@@ -135,6 +137,7 @@ public class SearchScreenFragment extends Fragment implements SearchView.OnQuery
     @Override
     public boolean onQueryTextSubmit(String s) {
         searchWiki(s);
+        hideKeyboard(getActivity(), getView());
         return true;
     }
 
@@ -230,6 +233,15 @@ public class SearchScreenFragment extends Fragment implements SearchView.OnQuery
             e.printStackTrace();
         }
         return searchPageEntities;
+    }
+
+    private void hideKeyboard(Context context, View view) {
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        }
     }
 
 }

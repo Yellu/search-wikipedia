@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">@color/primary</color>
+    <color name="colorPrimaryDark">@color/dark</color>
     <color name="colorAccent">#FF4081</color>
 
     <!-- custom color -->
     <color name="title_color">#222222</color>
+
+    <color name="primary">#782E9B</color>
+    <color name="dark">#422855</color>
 </resources>
