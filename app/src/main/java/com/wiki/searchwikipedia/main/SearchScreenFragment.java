@@ -21,13 +21,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-
 import com.wiki.searchwikipedia.R;
 import com.wiki.searchwikipedia.database.SearchPageEntity;
-import com.wiki.searchwikipedia.database.SearchResultMainEntity;
 import com.wiki.searchwikipedia.network.ApiManager;
-
-import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,8 +46,7 @@ public class SearchScreenFragment extends Fragment implements SearchView.OnQuery
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.search) SearchView searchView;
     @BindView(R.id.feed_loader) ContentLoadingProgressBar loader;
-    @BindView(R.id.tv_error_message)
-    TextView tvErrorMessage;
+    @BindView(R.id.tv_error_message) TextView tvErrorMessage;
 
     private Realm realm;
     private SearchResultAdapter adapter;
@@ -83,8 +78,6 @@ public class SearchScreenFragment extends Fragment implements SearchView.OnQuery
             actionBar.setDisplayShowTitleEnabled(false);
             toolbar.setTitle(R.string.app_name);
         }
-
-
         pageEntities = realm.where(SearchPageEntity.class).findAll();
         if (pageEntities.isEmpty()){
             tvErrorMessage.setVisibility(View.VISIBLE);
@@ -172,8 +165,6 @@ public class SearchScreenFragment extends Fragment implements SearchView.OnQuery
         queryMap.put("gpssearch", query);
         queryMap.put("gpslimit", 10);
 //        queryMap.put("pithumbsize", 100);
-
-
         request = ApiManager.getInstance().searchApi(queryMap);
 
         request.enqueue(new Callback<ResponseBody>() {
@@ -204,9 +195,7 @@ public class SearchScreenFragment extends Fragment implements SearchView.OnQuery
     }
 
     private List<SearchPageEntity> handleResponse(ResponseBody body){
-
         List<SearchPageEntity> searchPageEntities = new ArrayList<>();
-
         try {
             if (body == null){
                 return searchPageEntities;
